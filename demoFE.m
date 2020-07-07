@@ -27,14 +27,18 @@ FE.rel=0;
 FE.peakfinder=0;
 
 
-[feat, vfc, vP, vT] = sPAFEmono(signal(:,1),FE);
+[matfeat, vfc, vP, vT] = sPAFEmono(signal(:,1),FE);
 feat= matfeat2cellfeat(matfeat,vP,vT,vfc);
 
 
 %% Plots
 
-% plot extracted features - whole signal
+% plot extracted features - whole signal (using features represented as matrix)
 figure;implot_3dscatter(matfeat.m3PG_Etot,vfc,vP,vT);suptitle('Total periodic energy glimpses [dB]')
+
+% plot extracted features - whole signal (using features represented as cell)
+figure;implot_3dscatter(feat.o,vfc,vP,vT);suptitle('Total periodic energy glimpses [dB]')
+
 % plot extracted features - one time instance
 figure;implot_timeinst(matfeat.m3PG_Etot,34,vfc,vP);suptitle('Total periodic energy glimpses [dB]')
 % plot extracted features - one channel
