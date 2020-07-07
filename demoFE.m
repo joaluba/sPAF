@@ -27,25 +27,16 @@ FE.rel=0;
 FE.peakfinder=0;
 
 
-[m3PD,m3PG_Etot,m3PG_Erel,mE,vfc,vP, vT] = sPAFEmono(signal(:,1),FE);
+[feat, vfc, vP, vT] = sPAFEmono(signal(:,1),FE);
+feat= matfeat2cellfeat(matfeat,vP,vT,vfc);
 
 
 %% Plots
 
-% plot for one time frame t
-t=31;
-figure;implot_timeinst(m3PD,t,vfc,vP);suptitle('Normalized periodic energy [0,1]')
-figure;implot_timeinst(m3PG_Etot,t,vfc,vP);suptitle('Total periodic energy glimpses [dB]')
-figure;implot_timeinst(m3PG_Erel,t,vfc,vP);suptitle('Normalized periodic energy glimpses [0,1]')
-
-% plot for one channel c
-c=10
-figure;implot_channel(m3PD,c,vT,vP);suptitle('Normalized periodic energy [0,1]')
-figure;implot_channel(m3PG_Etot,c,vT,vP);suptitle('Total periodic energy glimpses [dB]')
-figure;implot_channel(m3PG_Erel,c,vT,vP);suptitle('Normalized periodic energy glimpses [0,1]')
-
-
-
-
-
+% plot extracted features - whole signal
+figure;implot_3dscatter(matfeat.m3PG_Etot,vfc,vP,vT);suptitle('Total periodic energy glimpses [dB]')
+% plot extracted features - one time instance
+figure;implot_timeinst(matfeat.m3PG_Etot,34,vfc,vP);suptitle('Total periodic energy glimpses [dB]')
+% plot extracted features - one channel
+figure;implot_channel(matfeat.m3PG_Etot,11,vT,vP);suptitle('Total periodic energy glimpses [dB]')
 

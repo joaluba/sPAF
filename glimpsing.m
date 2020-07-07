@@ -31,7 +31,7 @@ for t=1:size(prel,2);
         % normalized energy at a glimpse
         mPG_Erel_ch(glimpse_idx,t)=synchrum_t(glimpse_idx);
         % total energy at a glimpse
-        mPG_Etot_ch(glimpse_idx,t)=20*log10(total_t(glimpse_idx));
+        mPG_Etot_ch(glimpse_idx,t)=total_t(glimpse_idx);
     end
 end
 
