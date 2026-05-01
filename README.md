@@ -1,5 +1,7 @@
 # sPAF — Sparse Periodicity-Based Auditory Features
 
+![sPAF feature representation overview](spaf_image.jpg)
+
 Feature extraction for computational auditory scene analysis, based on the theory of auditory glimpses.
 
 **Associated publication:**  
